@@ -1,0 +1,63 @@
+<!-- Logo -->
+<div class="homepage-logo d-flex justify-evenly align-center d-m-bottom" [class.mat-elevation-z2]="true">
+    <mat-icon class="d-pad hover-div mouse-pointer" aria-hidden="false" (click)="onClickLogo()">
+        library_music
+    </mat-icon>
+    <div class="d-flex column homepage-logo-title-container">
+        <b>Geração</b>
+        <b>Procedural</b>
+        <b>de Melodias</b>
+    </div>
+</div>
+
+<!-- Geração da melodia -->
+<div class="d-pad homepage-info">
+
+    <h3><b>Gere uma melodia</b></h3>
+    <p>
+        O objetivo da GAN proposta é a geração de melodias com duração de trinta segundos que seguem as estruturas
+        apropriadas de cada gênero <i>g</i> informadas como entrada para o processo de composição. Para este propósito,
+        três redes neurais distintas são empregadas: G como gerador, D como discriminador de gênero e R como
+        discriminador de qualidade.
+    </p>
+
+    <div class="row justify-end align-center">
+
+        <!-- Gênero -->
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Gênero</mat-label>
+            <input type="text" placeholder="Selecione um gênero..." matInput [formControl]="generoControl"
+                [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of generoFilteredOptions | async" [value]="option.label">
+                    {{option.label}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <!-- Botão -->
+        <button class="d-m" mat-button (click)="generate()">Gerar uma melodia</button>
+
+    </div>
+
+    <app-player [melody]="melodia"></app-player>
+
+</div>
+
+<!-- Rodapé -->
+<footer class="d-flex column align-center d-pad homepage-footer">
+
+    <!-- Links -->
+    <div class="row d-pad-top">
+        <a href="https://pt.overleaf.com/project/624b224812931430467f5955">Artigo</a>
+    </div>
+
+    <!-- Logo -->
+    <div class="row justify-center align-center">
+        <mat-icon class="d-pad" aria-hidden="false">
+            library_music
+        </mat-icon>
+        <span>Geração Procedural de Melodias - 2022</span>
+    </div>
+
+</footer>

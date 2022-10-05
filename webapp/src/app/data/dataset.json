@@ -1,0 +1,88 @@
+[
+    {
+        "input_sequence": {
+            "notes": [
+                {
+                    "endTime": 2,
+                    "pitch": 64,
+                    "pitchName": "E",
+                    "quantizedEndStep": "8",
+                    "quantizedStartStep": "4",
+                    "startTime": 1,
+                    "velocity": 100
+                },
+                {
+                    "endTime": 3,
+                    "pitch": 71,
+                    "pitchName": "B",
+                    "quantizedEndStep": "12",
+                    "quantizedStartStep": "8",
+                    "startTime": 2,
+                    "velocity": 100
+                },
+                {
+                    "endTime": 4,
+                    "pitch": 65,
+                    "pitchName": "F",
+                    "quantizedEndStep": "16",
+                    "quantizedStartStep": "12",
+                    "startTime": 3,
+                    "velocity": 100
+                },
+                {
+                    "endTime": 5,
+                    "pitch": 72,
+                    "pitchName": "C",
+                    "quantizedEndStep": "20",
+                    "quantizedStartStep": "16",
+                    "startTime": 4,
+                    "velocity": 100
+                },
+                {
+                    "endTime": 6,
+                    "pitch": 69,
+                    "pitchName": "A",
+                    "quantizedEndStep": "24",
+                    "quantizedStartStep": "20",
+                    "startTime": 5,
+                    "velocity": 100
+                },
+                {
+                    "endTime": 7,
+                    "pitch": 74,
+                    "pitchName": "D",
+                    "quantizedEndStep": "28",
+                    "quantizedStartStep": "24",
+                    "startTime": 6,
+                    "velocity": 100
+                },
+                {
+                    "endTime": 8,
+                    "pitch": 64,
+                    "pitchName": "E",
+                    "quantizedEndStep": "32",
+                    "quantizedStartStep": "28",
+                    "startTime": 7,
+                    "velocity": 100
+                }
+            ],
+            "quantizationInfo": {
+                "stepsPerQuarter": 4
+            },
+            "tempos": [
+                {
+                    "qpm": 60
+                }
+            ],
+            "ticksPerQuarter": 220,
+            "timeSignatures": [
+                {
+                    "denominator": 4,
+                    "numerator": 4
+                }
+            ],
+            "totalQuantizedSteps": "32",
+            "totalTime": 8
+        }
+    }
+]
