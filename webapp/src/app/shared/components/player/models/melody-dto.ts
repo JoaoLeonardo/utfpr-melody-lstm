@@ -1,3 +1,5 @@
 export interface MelodyDTO {
-    input_sequence?: any;
+    id?: number;
+    melody: string; // json
+    rating: boolean;
 }

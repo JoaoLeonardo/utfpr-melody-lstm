@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 // material
 import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
@@ -40,6 +41,6 @@ const routes: Routes = [
     ],
     declarations: [
         HomepageComponent,
-    ],
+    ]
 })
 export class HomepageModule { }

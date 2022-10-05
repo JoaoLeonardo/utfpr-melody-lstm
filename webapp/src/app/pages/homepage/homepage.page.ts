@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 // shared
-import { MelodyDTO } from 'src/app/shared/components/player/models/melody-dto';
+import { Melody } from 'src/app/shared/components/player/models/melody';
 import { LabelValue } from 'src/app/shared/models/label-value';
 
 // mock data
@@ -12,18 +12,22 @@ import * as dataSet from '../../data/dataset.json';
 
 // aplicação
 import { getGeneroOptions } from './models/enums/genero';
+import { HomepageService } from './homepage.service';
 
 @Component({
     selector: 'app-homepage',
     templateUrl: './homepage.page.html',
     styleUrls: ['./homepage.page.scss'],
+    providers: [
+        HomepageService,
+    ]
 })
 export class HomepageComponent implements OnInit {
 
     /**
      * @description Melodia (MIDI) repassada ao player
      */
-    public melodia?: MelodyDTO;
+    public melodia?: Melody;
 
     /**
      * @description FormControl de gênero
@@ -34,7 +38,7 @@ export class HomepageComponent implements OnInit {
     public generoOptions: LabelValue[];
     public generoFilteredOptions?: Observable<LabelValue[]>;
 
-    constructor() {
+    constructor(public service: HomepageService) {
         this.generoControl = new FormControl(null, { validators: Validators.required });
         this.generoOptions = getGeneroOptions();
     }
@@ -57,7 +61,7 @@ export class HomepageComponent implements OnInit {
         if (!this.generoControl.valid) { return; }
 
         const randomIndex = Math.floor(Math.random() * 0);
-        const dto: MelodyDTO = dataSet[randomIndex];
+        const dto: Melody = dataSet[randomIndex];
         this.melodia = dto;
     }
 

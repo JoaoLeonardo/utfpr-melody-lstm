@@ -1,6 +1,7 @@
 import psycopg2
 from config import config
 
+
 def create_database():
     conn = None
     try:
@@ -8,7 +9,7 @@ def create_database():
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
 
-        sequence_ql = "CREATE SEQUENCE seq_melody START 0"
+        sequence_ql = "CREATE SEQUENCE IF NOT EXISTS seq_melody START 1"
         cur.execute(sequence_ql)
 
         table_ql = "CREATE TABLE IF NOT EXISTS melody (id SERIAL PRIMARY KEY, melody TEXT, rating bool)"
@@ -16,9 +17,10 @@ def create_database():
 
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
+        raise Exception(error)
     finally:
         if conn is not None:
+            conn.commit()
             conn.close()
     return
 
@@ -30,15 +32,11 @@ def insert_melody(melody, rating):
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
 
-        query = "INSERT INTO melody VALUES (nextval('serial'), %s, %s"
+        query = "INSERT INTO melody VALUES (nextval('seq_melody'), %s, %s)"
         cur.execute(query, (melody, rating))
-        melody_id = cur.fetchone()[0]
-        
-        cur.close()
-        return melody_id
     except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
+        raise Exception(error)
     finally:
         if conn is not None:
+            conn.commit()
             conn.close()
-    return

@@ -1,11 +1,16 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
+// material
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 // magenta
 import { NoteSequence } from '@magenta/music';
 import * as mm from '@magenta/music';
 
 // aplicação
-import { MelodyDTO } from './models/melody-dto';
+import { Melody } from './models/melody';
+import { PlayerService } from './core/player-service';
+import { errorTransform } from '../../pipes/error-transform';
 
 @Component({
     selector: 'app-player',
@@ -14,7 +19,9 @@ import { MelodyDTO } from './models/melody-dto';
 })
 export class PlayerComponent implements OnInit, OnChanges {
 
-    @Input() melody?: MelodyDTO;
+    @Input() melody?: Melody;
+
+    @Input() service?: PlayerService;
 
     public noteSequence?: NoteSequence;
 
@@ -22,9 +29,12 @@ export class PlayerComponent implements OnInit, OnChanges {
 
     public isPlaying: boolean;
 
-    constructor() {
+    public isLoading: boolean;
+
+    constructor(private snackBar: MatSnackBar) {
         this.midiPlayer = new mm.Player();
         this.isPlaying = false;
+        this.isLoading = false;
     }
 
     ngOnInit() { }
@@ -46,14 +56,35 @@ export class PlayerComponent implements OnInit, OnChanges {
                 notes: this.noteSequence.notes,
                 totalTime: this.noteSequence.totalTime
             });
-            
+
             this.isPlaying = false;
         } else {
             this.midiPlayer.stop();
         }
     }
 
-    public rate() { }
+    public rate(rating: boolean) {
+        if (!this.service) {
+            this.snackBar.open('Serviço indisponível.', 'OK');
+            return;
+        }
+        if (!this.melody) {
+            this.snackBar.open('Nenhuma melodia gerada! Por favor, gere uma melodia e tente novamente.', 'OK');
+            return;
+        }
+
+        this.isLoading = true;
+        this.service.rate({
+            melody: JSON.stringify(this.melody),
+            rating: rating
+        }).subscribe(() => {
+            this.isLoading = false;
+            this.snackBar.open('A avaliação foi salva com sucesso!', 'Ok');
+        }, error => {
+            this.isLoading = false;
+            this.snackBar.open(errorTransform(error) + '', 'Ok');
+        });
+    }
 
 }
 
