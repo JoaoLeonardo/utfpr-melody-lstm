@@ -1,2 +1,0 @@
-export const COLDS = ['#DBEDC7', '#B3DDCC', '#88CDCF', '#5FBED3', '#40A9D0', '#3A90BF', '#3176B0', '#2A5EA0', '#2C5DA0', '#1A2781', '#0D134D', '#0D134D', '#0D134D']
-export const WARMS = ['#FACDAA', '#F4ABA1', '#F08B97', '#EB688C', '#DD4F86', '#B93F8C', '#983291', '#762598', '#60198A', '#4E1772', '#3F155C', '#2F0F43', '#2F0F43'];
