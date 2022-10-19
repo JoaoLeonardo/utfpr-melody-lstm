@@ -3,6 +3,9 @@ import { FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
+// material
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 // shared
 import { Melody } from 'src/app/shared/components/player/models/melody';
 import { LabelValue } from 'src/app/shared/models/label-value';
@@ -34,11 +37,19 @@ export class HomepageComponent implements OnInit {
      */
     public generoControl: FormControl;
 
+    /**
+     * @description Flag que controla o estado "melodia avaliada"
+     */
+    public isAvaliada?: boolean;
+
     // enum options
     public generoOptions: LabelValue[];
     public generoFilteredOptions?: Observable<LabelValue[]>;
 
-    constructor(public service: HomepageService) {
+    constructor(
+        private snackBar: MatSnackBar,
+        public service: HomepageService,
+    ) {
         this.generoControl = new FormControl(null, { validators: Validators.required });
         this.generoOptions = getGeneroOptions();
     }
@@ -59,10 +70,14 @@ export class HomepageComponent implements OnInit {
     public generate() {
         this.generoControl.updateValueAndValidity();
         if (!this.generoControl.valid) { return; }
+        if (this.melodia && !this.isAvaliada) {
+            this.snackBar.open('Por favor, avalie a melodia antes de gerar uma nova.', 'Ok');
+        }
 
         const randomIndex = Math.floor(Math.random() * 0);
         const dto: Melody = dataSet[randomIndex];
         this.melodia = dto;
+        this.isAvaliada = false;
     }
 
     /**
@@ -72,6 +87,13 @@ export class HomepageComponent implements OnInit {
     public onClickLogo() {
         const footer = document.getElementsByTagName('footer');
         footer[0].scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /**
+     * @description Executa no evento de avaliação da melodia
+     */
+    public onMelodiaAvaliada() {
+        this.isAvaliada = true;
     }
 
     /**

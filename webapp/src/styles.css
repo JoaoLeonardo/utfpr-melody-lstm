@@ -17,6 +17,7 @@ body {
 .grow-2 { flex-grow: 2; }
 
 .d-flex, .row, .row-between, .row-evenly, .column { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
 
 .justify-between { justify-content: space-between; }
 .justify-evenly { justify-content: space-evenly; }
@@ -40,6 +41,8 @@ body {
 .d-pad-top { padding-top: 8px !important; }
 .d-pad-horizontal { padding: 8px 0px !important; }
 
+.d-pad-vertical-lg { padding: 16px 0px !important ;}
+
 .d-pad-card-container { padding: 8px 5vw !important; }
 
 .text-m-right { margin-right: 4px !important; }
@@ -58,6 +61,7 @@ body {
 
 .full-width { width: 100%; }
 .half-width { width: 50%; }
+.full-height { height: 100%; }
 
 .overflow-x {
     overflow-x: scroll;
@@ -70,10 +74,13 @@ body {
     text-align: justify;
     text-justify: inter-word;
 }
+.text-overflow-break { white-space: initial; }
 
 .icon-offset-top { padding-top: 2px; }
 
 .sys-link { text-decoration: underline; }
+
+.border { border: 1px solid #0000001c }
 
 .border-bottom {
     border-color: #0000001c;

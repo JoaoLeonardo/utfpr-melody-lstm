@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 // material
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,6 +19,8 @@ import { errorTransform } from '../../pipes/error-transform';
 })
 export class PlayerComponent implements OnInit, OnChanges {
 
+    @Output() ratingEvt: EventEmitter<void>;
+
     @Input() melody?: Melody;
 
     @Input() service?: PlayerService;
@@ -31,10 +33,14 @@ export class PlayerComponent implements OnInit, OnChanges {
 
     public isLoading: boolean;
 
+    public isRated: boolean;
+
     constructor(private snackBar: MatSnackBar) {
         this.midiPlayer = new mm.Player();
+        this.ratingEvt = new EventEmitter();
         this.isPlaying = false;
         this.isLoading = false;
+        this.isRated = false;
     }
 
     ngOnInit() { }
@@ -80,6 +86,7 @@ export class PlayerComponent implements OnInit, OnChanges {
         }).subscribe(() => {
             this.isLoading = false;
             this.snackBar.open('A avaliação foi salva com sucesso!', 'Ok');
+            this.ratingEvt.next();
         }, error => {
             this.isLoading = false;
             this.snackBar.open(errorTransform(error) + '', 'Ok');
