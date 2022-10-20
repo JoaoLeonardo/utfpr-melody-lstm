@@ -1,5 +1,7 @@
+import requests
 import psycopg2
 from config import config
+from flask import Response
 
 
 def create_database():
@@ -12,7 +14,7 @@ def create_database():
         sequence_ql = "CREATE SEQUENCE IF NOT EXISTS seq_melody START 1"
         cur.execute(sequence_ql)
 
-        table_ql = "CREATE TABLE IF NOT EXISTS melody (id SERIAL PRIMARY KEY, melody TEXT, rating bool)"
+        table_ql = "CREATE TABLE IF NOT EXISTS melody (id SERIAL PRIMARY KEY, melody TEXT, rating bool, genre smallint)"
         cur.execute(table_ql)
 
         cur.close()
@@ -24,6 +26,10 @@ def create_database():
             conn.close()
     return
 
+def request_melody(genre): 
+    payload = {'genre': genre}
+    response = requests.get('http://4107-35-233-144-153.ngrok.io/get-sample', params=payload)
+    return Response(response.text, mimetype='text/plain')
 
 def insert_melody(melody, rating):
     conn = None

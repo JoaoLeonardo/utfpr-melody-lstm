@@ -8,10 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 // shared
 import { Melody } from 'src/app/shared/components/player/models/melody';
+import { errorTransform } from 'src/app/shared/pipes/error-transform';
 import { LabelValue } from 'src/app/shared/models/label-value';
-
-// mock data
-import * as dataSet from '../../data/dataset.json';
 
 // aplicação
 import { getGeneroOptions } from './models/enums/genero';
@@ -46,12 +44,20 @@ export class HomepageComponent implements OnInit {
     public generoOptions: LabelValue[];
     public generoFilteredOptions?: Observable<LabelValue[]>;
 
+    // variáveis do template
+    public loading: boolean;
+    public currentMelodyGenre?: number;
+    
+    // variáveis do ts
+    private currentNoteSequence?: string;
+
     constructor(
         private snackBar: MatSnackBar,
         public service: HomepageService,
     ) {
         this.generoControl = new FormControl(null, { validators: Validators.required });
         this.generoOptions = getGeneroOptions();
+        this.loading = false;
     }
 
     ngOnInit(): void {
@@ -69,15 +75,25 @@ export class HomepageComponent implements OnInit {
      */
     public generate() {
         this.generoControl.updateValueAndValidity();
+
         if (!this.generoControl.valid) { return; }
         if (this.melodia && !this.isAvaliada) {
             this.snackBar.open('Por favor, avalie a melodia antes de gerar uma nova.', 'Ok');
         }
 
-        const randomIndex = Math.floor(Math.random() * 0);
-        const dto: Melody = dataSet[randomIndex];
-        this.melodia = dto;
-        this.isAvaliada = false;
+        this.currentMelodyGenre = this.generoOptions.findIndex(item => 
+            item.label === this.generoControl.value) + 1;
+        
+        this.loading = true;
+        this.service.generate(this.currentMelodyGenre).subscribe(res => {
+            this.loading = false;
+            this.currentNoteSequence = res;
+            // TODO: conveter NoteSequence (textplain) para Melody
+            // this.melodia = this.currentNoteSequence...  
+        }, error => {
+            this.loading = false;
+            this.snackBar.open(errorTransform(error), 'Ok');
+        });
     }
 
     /**

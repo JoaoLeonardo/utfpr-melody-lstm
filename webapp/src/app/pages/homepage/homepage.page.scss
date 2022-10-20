@@ -33,12 +33,17 @@ $dark-accent: map-get($dark-theme, accent);
     margin-left: 10vw;
 }
 
+.homepage-info {
+    // background-color: white;
+    // box-shadow: 4px 2px 1px rgba(0, 0, 0, 0.50);
+}
+
 .homepage-section {
     line-height: 1em;
     background-color: mat-color($soft-accent);
     font-size: 2em;
     color: white;
-    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.50);
 }
 
 .homepage-primary-section {

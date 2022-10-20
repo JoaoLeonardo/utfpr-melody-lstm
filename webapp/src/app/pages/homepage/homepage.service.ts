@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -20,6 +20,18 @@ export class HomepageService implements PlayerService {
     constructor(
         public http: HttpClient,
     ) { }
+
+    public generate(genre: number): Observable<string> {
+        const headers = new HttpHeaders()
+        headers.set('Content-Type', 'text/plain; charset=utf-8');
+        headers.set('Accept', 'text/plain; charset=utf-8')
+        const params = new HttpParams().append('genre', genre)
+        return this.http.get<string>(this.baseUrl + 'generate-melody', { 
+            headers: headers, 
+            params: params,
+            responseType: 'text' as any
+        });
+    }
 
     public rate(dto: MelodyDTO): Observable<void> {
         return this.http.post<void>(this.baseUrl + 'rate-melody', dto);

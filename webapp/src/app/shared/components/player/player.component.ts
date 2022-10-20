@@ -22,6 +22,8 @@ export class PlayerComponent implements OnInit, OnChanges {
     @Output() ratingEvt: EventEmitter<void>;
 
     @Input() melody?: Melody;
+    
+    @Input() genre?: number;
 
     @Input() service?: PlayerService;
 
@@ -82,7 +84,8 @@ export class PlayerComponent implements OnInit, OnChanges {
         this.isLoading = true;
         this.service.rate({
             melody: JSON.stringify(this.melody),
-            rating: rating
+            rating: rating,
+            genre: this.genre!
         }).subscribe(() => {
             this.isLoading = false;
             this.snackBar.open('A avaliação foi salva com sucesso!', 'Ok');

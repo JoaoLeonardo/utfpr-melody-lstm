@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 // material
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,6 +35,7 @@ const routes: Routes = [
         MatSelectModule,
         MatFormFieldModule,
         MatAutocompleteModule,
+        MatProgressSpinnerModule,
         
         // shared
         PlayerModule,

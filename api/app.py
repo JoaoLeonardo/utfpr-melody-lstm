@@ -3,7 +3,7 @@
 
 from flask import Flask, request
 from flask_cors import CORS
-from repository import create_database, insert_melody
+from repository import create_database, insert_melody, request_melody
 
 app = Flask(__name__)
 CORS(app)
@@ -17,4 +17,9 @@ def rate_melody():
 
     insert_melody(melody, rating)
     return {"message": f"A avaliação da melodia foi salva com sucesso."}, 201
+
+@app.route("/generate-melody", methods=['GET'])
+def generate_melody():
+    genre = request.args.get('genre')
+    return request_melody(genre)
 
