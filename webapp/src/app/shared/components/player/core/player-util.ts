@@ -2,42 +2,63 @@ import { MelodyNote } from "../models/melody-note";
 
 export class PlayerUtil {
 
-    public convertToInputSequence(str: string): any {
-        const totalTime = this.getTotalTime(str);
-        const totalNotes = this.getTotalNotes(str);
+    private STEP = 4;
+    private MAX_LOOP = 20;
 
-        let notes: MelodyNote[] = [];
+    private currentQuantizedStep!: number;
+
+    public convertToInputSequence(str: string): any {
+        const totalNotes = this.getTotalNotes(str);
+        this.currentQuantizedStep = 0;
+
+        const notes: MelodyNote[] = [];
         let lastIndex: number = str.indexOf('notes');
         for (let i = 0; i < totalNotes; i++) {
             const res = this.getNote(str, lastIndex);
+            
+            if (res.note.pitch > 60) {
+                notes.push(res.note);
+            }
+            
             lastIndex = res.lastIndex;
-            notes.push(res.note);
+            this.currentQuantizedStep += this.STEP;
         }
 
         return {
             notes: notes,
-            totalTime: totalTime,
-            totalQuantizedSteps: 8,
-            tempos: [ { qpm: 60 }],
-            quantizationInfo: {
-                stepsPerQuarter: 4
-            },
+            tempos: [this.getTempo(str)],
+            totalTime: this.getTotalTime(str),
+            ticksPerQuarter: this.getTicksPerQuarter(str),
+            totalQuantizedSteps: this.currentQuantizedStep,
+            quantizationInfo: { stepsPerQuarter: 4 },
         };
     }
 
-    private getTotalTime(str: string): number {
-        const maxLoops = 20;
-
-        let timeStr = '';
+    private parseStringAsNumber(str: string, separator: string) {
+        let numberStr = '';
         let currentLoop = 1;
 
-        while (str.charAt(str.length - currentLoop) !== ' ' && currentLoop <= maxLoops) {
-            const timeChar = str.charAt(str.length - currentLoop);
-            timeStr = timeChar.concat(timeStr);
+        while (str.charAt(str.length - currentLoop) !== separator && currentLoop <= this.MAX_LOOP) {
+            const char = str.charAt(str.length - currentLoop);
+            numberStr = char.concat(char);
             currentLoop++;
         }
 
-        return +timeStr;
+        return +numberStr;
+    }
+
+    private getTotalTime(str: string): number {
+        return this.parseStringAsNumber(str, ' ');
+    }
+
+    private getTempo(str: string): { qpm: number } {
+        const qpmStr = str.slice(str.indexOf('qpm'));
+        return { qpm: this.parseStringAsNumber(qpmStr.slice(0, qpmStr.indexOf('\r')), ' ') };
+    }
+
+    private getTicksPerQuarter(str: string): number {
+        const ticksStr = str.slice(str.indexOf('ticks_per_quarter'));
+        return this.parseStringAsNumber(ticksStr.slice(0, ticksStr.indexOf('\r')), ' ');
     }
 
     private getTotalNotes(str: string) {
@@ -54,10 +75,10 @@ export class PlayerUtil {
             note: {
                 pitch: this.getPropNumber(noteStr, 'pitch'),
                 velocity: this.getPropNumber(noteStr, 'velocity'),
-                start_time: this.getPropNumber(noteStr, 'start_time'),
-                end_time: this.getPropNumber(noteStr, 'end_time'),
-                quantizedStartStep: 4,
-                quantizedEndStep: 8
+                startTime: this.getPropNumber(noteStr, 'start_time'),
+                endTime: this.getPropNumber(noteStr, 'end_time'),
+                quantizedStartStep: this.currentQuantizedStep,
+                quantizedEndStep: this.currentQuantizedStep + this.STEP
             },
             lastIndex: noteEnd
         };
@@ -68,10 +89,10 @@ export class PlayerUtil {
         if (propIndex < 0) { return 0; }
         const propLastIndex = str.indexOf('\r', propIndex);
 
-        const maxLoops = 20;
+        
         let propStr = '';
         let currentLoop = 1;
-        while (str.charAt(propLastIndex - currentLoop) !== ' ' && currentLoop <= maxLoops) {
+        while (str.charAt(propLastIndex - currentLoop) !== ' ' && currentLoop <= this.MAX_LOOP) {
             const char = str.charAt(propLastIndex - currentLoop);
             propStr = char.concat(propStr);
             currentLoop++;

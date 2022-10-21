@@ -5,6 +5,7 @@ $accent: map-get($theme, accent);
 
 .midi-visualizer {
     border: 2px black solid;
+    max-height: 300px !important;
     overflow: scroll;
 }
 
