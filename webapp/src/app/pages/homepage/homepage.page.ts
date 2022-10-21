@@ -85,9 +85,12 @@ export class HomepageComponent implements OnInit {
             item.label === this.generoControl.value) + 1;
         
         this.loading = true;
-        this.service.generate(this.currentMelodyGenre).subscribe(res => {
+        this.service.mock(this.currentMelodyGenre).subscribe(res => {
             this.loading = false;
             this.currentNoteSequence = res;
+            this.melodia = {
+                input_sequence: this.service.playerUtil.convertToInputSequence(res)
+            }
             // TODO: conveter NoteSequence (textplain) para Melody
             // this.melodia = this.currentNoteSequence...  
         }, error => {

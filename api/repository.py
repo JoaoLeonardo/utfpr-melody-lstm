@@ -28,7 +28,7 @@ def create_database():
 
 def request_melody(genre): 
     payload = {'genre': genre}
-    response = requests.get('http://4107-35-233-144-153.ngrok.io/get-sample', params=payload)
+    response = requests.get('http://7d6b-35-245-61-174.ngrok.io/get-sample', params=payload)
     return Response(response.text, mimetype='text/plain')
 
 def insert_melody(melody, rating):

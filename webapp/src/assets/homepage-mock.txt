@@ -1,0 +1,532 @@
+ticks_per_quarter: 220
+tempos {
+  qpm: 120.0
+}
+notes {
+  pitch: 80
+  velocity: 80
+  end_time: 0.125
+}
+notes {
+  pitch: 68
+  velocity: 80
+  start_time: 0.125
+  end_time: 0.25
+}
+notes {
+  pitch: 27
+  velocity: 80
+  start_time: 0.25
+  end_time: 0.375
+}
+notes {
+  pitch: 98
+  velocity: 80
+  start_time: 0.375
+  end_time: 0.5
+}
+notes {
+  pitch: 68
+  velocity: 80
+  start_time: 0.5
+  end_time: 0.625
+}
+notes {
+  pitch: 22
+  velocity: 80
+  start_time: 0.625
+  end_time: 0.75
+}
+notes {
+  pitch: 63
+  velocity: 80
+  start_time: 0.75
+  end_time: 0.875
+}
+notes {
+  pitch: 85
+  velocity: 80
+  start_time: 0.875
+  end_time: 1.0
+}
+notes {
+  pitch: 98
+  velocity: 80
+  start_time: 1.0
+  end_time: 1.125
+}
+notes {
+  pitch: 27
+  velocity: 80
+  start_time: 1.125
+  end_time: 1.25
+}
+notes {
+  pitch: 104
+  velocity: 80
+  start_time: 1.25
+  end_time: 1.375
+}
+notes {
+  pitch: 100
+  velocity: 80
+  start_time: 1.375
+  end_time: 1.5
+}
+notes {
+  pitch: 68
+  velocity: 80
+  start_time: 1.5
+  end_time: 1.625
+}
+notes {
+  pitch: 94
+  velocity: 80
+  start_time: 1.625
+  end_time: 1.75
+}
+notes {
+  pitch: 25
+  velocity: 80
+  start_time: 1.75
+  end_time: 1.875
+}
+notes {
+  pitch: 77
+  velocity: 80
+  start_time: 1.875
+  end_time: 2.0
+}
+notes {
+  pitch: 99
+  velocity: 80
+  start_time: 2.0
+  end_time: 2.125
+}
+notes {
+  pitch: 64
+  velocity: 80
+  start_time: 2.125
+  end_time: 2.25
+}
+notes {
+  pitch: 24
+  velocity: 80
+  start_time: 2.25
+  end_time: 2.375
+}
+notes {
+  pitch: 32
+  velocity: 80
+  start_time: 2.375
+  end_time: 2.5
+}
+notes {
+  pitch: 50
+  velocity: 80
+  start_time: 2.5
+  end_time: 2.625
+}
+notes {
+  pitch: 73
+  velocity: 80
+  start_time: 2.625
+  end_time: 2.75
+}
+notes {
+  pitch: 70
+  velocity: 80
+  start_time: 2.75
+  end_time: 2.875
+}
+notes {
+  pitch: 72
+  velocity: 80
+  start_time: 2.875
+  end_time: 3.0
+}
+notes {
+  pitch: 93
+  velocity: 80
+  start_time: 3.0
+  end_time: 3.125
+}
+notes {
+  pitch: 96
+  velocity: 80
+  start_time: 3.125
+  end_time: 3.25
+}
+notes {
+  pitch: 75
+  velocity: 80
+  start_time: 3.25
+  end_time: 3.375
+}
+notes {
+  pitch: 103
+  velocity: 80
+  start_time: 3.375
+  end_time: 3.5
+}
+notes {
+  pitch: 107
+  velocity: 80
+  start_time: 3.5
+  end_time: 3.625
+}
+notes {
+  pitch: 55
+  velocity: 80
+  start_time: 3.625
+  end_time: 3.75
+}
+notes {
+  pitch: 62
+  velocity: 80
+  start_time: 3.75
+  end_time: 3.875
+}
+notes {
+  pitch: 25
+  velocity: 80
+  start_time: 3.875
+  end_time: 4.0
+}
+notes {
+  pitch: 22
+  velocity: 80
+  start_time: 4.0
+  end_time: 4.125
+}
+notes {
+  pitch: 23
+  velocity: 80
+  start_time: 4.125
+  end_time: 4.25
+}
+notes {
+  pitch: 100
+  velocity: 80
+  start_time: 4.25
+  end_time: 4.375
+}
+notes {
+  pitch: 38
+  velocity: 80
+  start_time: 4.375
+  end_time: 4.5
+}
+notes {
+  pitch: 32
+  velocity: 80
+  start_time: 4.5
+  end_time: 4.625
+}
+notes {
+  pitch: 60
+  velocity: 80
+  start_time: 4.625
+  end_time: 4.75
+}
+notes {
+  pitch: 89
+  velocity: 80
+  start_time: 4.75
+  end_time: 4.875
+}
+notes {
+  pitch: 76
+  velocity: 80
+  start_time: 4.875
+  end_time: 5.0
+}
+notes {
+  pitch: 60
+  velocity: 80
+  start_time: 5.0
+  end_time: 5.125
+}
+notes {
+  pitch: 89
+  velocity: 80
+  start_time: 5.125
+  end_time: 5.25
+}
+notes {
+  pitch: 83
+  velocity: 80
+  start_time: 5.25
+  end_time: 5.375
+}
+notes {
+  pitch: 46
+  velocity: 80
+  start_time: 5.375
+  end_time: 5.5
+}
+notes {
+  pitch: 32
+  velocity: 80
+  start_time: 5.5
+  end_time: 5.625
+}
+notes {
+  pitch: 61
+  velocity: 80
+  start_time: 5.625
+  end_time: 5.75
+}
+notes {
+  pitch: 89
+  velocity: 80
+  start_time: 5.75
+  end_time: 5.875
+}
+notes {
+  pitch: 108
+  velocity: 80
+  start_time: 5.875
+  end_time: 6.125
+}
+notes {
+  pitch: 84
+  velocity: 80
+  start_time: 6.125
+  end_time: 6.25
+}
+notes {
+  pitch: 100
+  velocity: 80
+  start_time: 6.375
+  end_time: 6.5
+}
+notes {
+  pitch: 77
+  velocity: 80
+  start_time: 6.5
+  end_time: 6.625
+}
+notes {
+  pitch: 73
+  velocity: 80
+  start_time: 6.625
+  end_time: 6.75
+}
+notes {
+  pitch: 35
+  velocity: 80
+  start_time: 6.75
+  end_time: 6.875
+}
+notes {
+  pitch: 51
+  velocity: 80
+  start_time: 6.875
+  end_time: 7.0
+}
+notes {
+  pitch: 35
+  velocity: 80
+  start_time: 7.0
+  end_time: 7.125
+}
+notes {
+  pitch: 106
+  velocity: 80
+  start_time: 7.125
+  end_time: 7.25
+}
+notes {
+  pitch: 80
+  velocity: 80
+  start_time: 7.25
+  end_time: 7.375
+}
+notes {
+  pitch: 90
+  velocity: 80
+  start_time: 7.375
+  end_time: 7.5
+}
+notes {
+  pitch: 28
+  velocity: 80
+  start_time: 7.5
+  end_time: 7.625
+}
+notes {
+  pitch: 34
+  velocity: 80
+  start_time: 7.625
+  end_time: 7.75
+}
+notes {
+  pitch: 68
+  velocity: 80
+  start_time: 7.75
+  end_time: 7.875
+}
+notes {
+  pitch: 82
+  velocity: 80
+  start_time: 7.875
+  end_time: 8.0
+}
+notes {
+  pitch: 100
+  velocity: 80
+  start_time: 8.0
+  end_time: 8.125
+}
+notes {
+  pitch: 91
+  velocity: 80
+  start_time: 8.125
+  end_time: 8.25
+}
+notes {
+  pitch: 63
+  velocity: 80
+  start_time: 8.25
+  end_time: 8.375
+}
+notes {
+  pitch: 78
+  velocity: 80
+  start_time: 8.375
+  end_time: 8.5
+}
+notes {
+  pitch: 43
+  velocity: 80
+  start_time: 8.5
+  end_time: 8.625
+}
+notes {
+  pitch: 38
+  velocity: 80
+  start_time: 8.625
+  end_time: 8.75
+}
+notes {
+  pitch: 104
+  velocity: 80
+  start_time: 8.75
+  end_time: 8.875
+}
+notes {
+  pitch: 69
+  velocity: 80
+  start_time: 8.875
+  end_time: 9.0
+}
+notes {
+  pitch: 67
+  velocity: 80
+  start_time: 9.0
+  end_time: 9.125
+}
+notes {
+  pitch: 33
+  velocity: 80
+  start_time: 9.125
+  end_time: 9.25
+}
+notes {
+  pitch: 30
+  velocity: 80
+  start_time: 9.25
+  end_time: 9.375
+}
+notes {
+  pitch: 77
+  velocity: 80
+  start_time: 9.375
+  end_time: 9.5
+}
+notes {
+  pitch: 27
+  velocity: 80
+  start_time: 9.5
+  end_time: 9.625
+}
+notes {
+  pitch: 64
+  velocity: 80
+  start_time: 9.625
+  end_time: 9.75
+}
+notes {
+  pitch: 89
+  velocity: 80
+  start_time: 9.75
+  end_time: 9.875
+}
+notes {
+  pitch: 25
+  velocity: 80
+  start_time: 9.875
+  end_time: 10.0
+}
+notes {
+  pitch: 33
+  velocity: 80
+  start_time: 10.0
+  end_time: 10.125
+}
+notes {
+  pitch: 49
+  velocity: 80
+  start_time: 10.125
+  end_time: 10.25
+}
+notes {
+  pitch: 107
+  velocity: 80
+  start_time: 10.25
+  end_time: 10.375
+}
+notes {
+  pitch: 47
+  velocity: 80
+  start_time: 10.375
+  end_time: 10.5
+}
+notes {
+  pitch: 61
+  velocity: 80
+  start_time: 10.5
+  end_time: 10.625
+}
+notes {
+  pitch: 33
+  velocity: 80
+  start_time: 10.625
+  end_time: 10.75
+}
+notes {
+  pitch: 73
+  velocity: 80
+  start_time: 10.75
+  end_time: 10.875
+}
+notes {
+  pitch: 99
+  velocity: 80
+  start_time: 10.875
+  end_time: 11.0
+}
+notes {
+  pitch: 105
+  velocity: 80
+  start_time: 11.0
+  end_time: 11.125
+}
+notes {
+  pitch: 37
+  velocity: 80
+  start_time: 11.125
+  end_time: 11.25
+}
+total_time: 11.25

@@ -61,16 +61,18 @@ export class VisualizerComponent implements OnInit, OnChanges {
         let previousPitch = this.noteSequence.notes[0].pitch;
 
         this.noteSequence.notes.forEach((note: any, i: number) => {
-            const text = this.pitchToNote(note.pitch);
-            rects[i].style.fill = this.color(note.pitch - previousPitch);
-            previousPitch = note.pitch;
-
-            const textEl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            textEl.setAttribute('x', (+(rects[i].getAttribute('x') || 0) + 6) + '');
-            textEl.setAttribute('y', (+(rects[i].getAttribute('y') || 0) + 12) + '');
-            textEl.setAttribute('fill', 'white');
-            textEl.textContent = text;
-            svg.appendChild(textEl);
+            if (note.pitch > 37) {
+                const text = this.pitchToNote(note.pitch);
+                rects[i].style.fill = this.color(note.pitch - previousPitch);
+                previousPitch = note.pitch;
+    
+                const textEl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                textEl.setAttribute('x', (+(rects[i].getAttribute('x') || 0) + 6) + '');
+                textEl.setAttribute('y', (+(rects[i].getAttribute('y') || 0) + 12) + '');
+                textEl.setAttribute('fill', 'white');
+                textEl.textContent = text;
+                svg.appendChild(textEl);
+            }
         });
     }
 
