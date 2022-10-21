@@ -13,9 +13,11 @@ create_database()
 def rate_melody():
     data = request.get_json()
     melody = data["melody"]
+    sequence = data["sequence"]
     rating = data["rating"]
+    genre = data["genre"]
 
-    insert_melody(melody, rating)
+    insert_melody(melody, sequence, rating, genre)
     return {"message": f"A avaliação da melodia foi salva com sucesso."}, 201
 
 @app.route("/generate-melody", methods=['GET'])

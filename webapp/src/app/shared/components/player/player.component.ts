@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 // material
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,26 +8,20 @@ import { NoteSequence } from '@magenta/music';
 import * as mm from '@magenta/music';
 
 // aplicação
-import { Melody } from './models/melody';
-import { PlayerService } from './core/player-service';
 import { errorTransform } from '../../pipes/error-transform';
+import { PlayerController } from './player.controller';
+import { PlayerService } from './core/player-service';
 
 @Component({
     selector: 'app-player',
     templateUrl: 'player.component.html',
     styleUrls: ['./player.component.scss']
 })
-export class PlayerComponent implements OnInit, OnChanges {
+export class PlayerComponent implements OnInit {
 
-    @Output() ratingEvt: EventEmitter<void>;
-
-    @Input() melody?: Melody;
-    
-    @Input() genre?: number;
+    @Output() ratingEvt: EventEmitter<boolean>;
 
     @Input() service?: PlayerService;
-
-    public noteSequence?: NoteSequence;
 
     public midiPlayer: mm.Player;
 
@@ -35,22 +29,24 @@ export class PlayerComponent implements OnInit, OnChanges {
 
     public isLoading: boolean;
 
-    public isRated: boolean;
-
-    constructor(private snackBar: MatSnackBar) {
+    constructor(
+        private controller: PlayerController,
+        private snackBar: MatSnackBar,
+    ) {
         this.midiPlayer = new mm.Player();
         this.ratingEvt = new EventEmitter();
         this.isPlaying = false;
-        this.isLoading = false;
-        this.isRated = false;
+        this.isLoading = false;;
     }
 
     ngOnInit() { }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['melody']) {
-            this.noteSequence = this.melody ? this.melody.input_sequence : null;
-        }
+    public get noteSequence(): NoteSequence {
+        return this.controller.melody?.input_sequence;
+    }
+
+    public get isRated(): boolean {
+        return this.controller.rated;
     }
 
     public async play() {
@@ -76,20 +72,22 @@ export class PlayerComponent implements OnInit, OnChanges {
             this.snackBar.open('Serviço indisponível.', 'OK');
             return;
         }
-        if (!this.melody) {
+        if (!this.controller.melody) {
             this.snackBar.open('Nenhuma melodia gerada! Por favor, gere uma melodia e tente novamente.', 'OK');
             return;
         }
 
         this.isLoading = true;
         this.service.rate({
-            melody: JSON.stringify(this.melody),
+            melody: JSON.stringify(this.controller.melody),
+            sequence: this.controller.sequence!,
             rating: rating,
-            genre: this.genre!
+            genre: this.controller.genre!,
         }).subscribe(() => {
             this.isLoading = false;
             this.snackBar.open('A avaliação foi salva com sucesso!', 'Ok');
-            this.ratingEvt.next();
+            this.controller.rated = true;
+            this.ratingEvt.next(rating);
         }, error => {
             this.isLoading = false;
             this.snackBar.open(errorTransform(error) + '', 'Ok');

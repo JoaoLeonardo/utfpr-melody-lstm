@@ -53,12 +53,12 @@ export class PlayerUtil {
 
     private getTempo(str: string): { qpm: number } {
         const qpmStr = str.slice(str.indexOf('qpm'));
-        return { qpm: this.parseStringAsNumber(qpmStr.slice(0, qpmStr.indexOf('\r')), ' ') };
+        return { qpm: this.parseStringAsNumber(qpmStr.slice(0, qpmStr.indexOf('\n')), ' ') };
     }
 
     private getTicksPerQuarter(str: string): number {
         const ticksStr = str.slice(str.indexOf('ticks_per_quarter'));
-        return this.parseStringAsNumber(ticksStr.slice(0, ticksStr.indexOf('\r')), ' ');
+        return this.parseStringAsNumber(ticksStr.slice(0, ticksStr.indexOf('\n')), ' ');
     }
 
     private getTotalNotes(str: string) {
@@ -87,9 +87,8 @@ export class PlayerUtil {
     private getPropNumber(str: string, search: string): number {
         const propIndex = str.indexOf(search);
         if (propIndex < 0) { return 0; }
-        const propLastIndex = str.indexOf('\r', propIndex);
+        const propLastIndex = str.indexOf('\n', propIndex);
 
-        
         let propStr = '';
         let currentLoop = 1;
         while (str.charAt(propLastIndex - currentLoop) !== ' ' && currentLoop <= this.MAX_LOOP) {
