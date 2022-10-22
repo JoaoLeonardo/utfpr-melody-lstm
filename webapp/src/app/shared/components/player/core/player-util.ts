@@ -40,7 +40,7 @@ export class PlayerUtil {
 
         while (str.charAt(str.length - currentLoop) !== separator && currentLoop <= this.MAX_LOOP) {
             const char = str.charAt(str.length - currentLoop);
-            numberStr = char.concat(char);
+            numberStr = char.concat(numberStr);
             currentLoop++;
         }
 

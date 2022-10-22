@@ -28,22 +28,19 @@ $dark-accent: map-get($dark-theme, accent);
     line-height: 1em;
 }
 
-.homepage-info, .homepage-section {
+.homepage-container {
     margin-right: 10vw;
     margin-left: 10vw;
-}
-
-.homepage-info {
-    // background-color: white;
-    // box-shadow: 4px 2px 1px rgba(0, 0, 0, 0.50);
+    background-color: white;
+    box-shadow: 4px 4px 16px rgb(0 0 0 / 50%);
 }
 
 .homepage-section {
     line-height: 1em;
     background-color: mat-color($soft-accent);
+    border-bottom: 4px solid #00000040;
     font-size: 2em;
     color: white;
-    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.50);
 }
 
 .homepage-primary-section {

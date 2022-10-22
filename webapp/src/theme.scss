@@ -25,7 +25,8 @@ h2 {
 .mat-button-sucess { background-color: mat-color($sucess) !important; }
 .mat-button-warn { background-color: mat-color($warn) !important; }
 
-.text-sucess { color: mat-color($sucess); }
+.text-sucess { color: mat-color($sucess) !important; }
+.text-error { color: mat-color($warn) !important; }
 
 .mat-row:hover .mat-cell { 
     background-color: mat-color($soft-primary); 

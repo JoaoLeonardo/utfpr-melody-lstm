@@ -16,11 +16,11 @@
 
         <!-- Avaliação -->
         <div class="row">
-            <button mat-icon-button class="text-sucess hover-div" label="Like" [disabled]="isLoading || isRated"
-                (click)="rate(true)">
+            <button mat-icon-button class="text-sucess hover-div d-m-right" label="Like" title="Gostei"
+                [disabled]="isLoading || isRated" (click)="rate(true)">
                 <mat-icon>thumb_up</mat-icon>
             </button>
-            <button mat-icon-button class="text-error hover-div" label="Dislike" [disabled]="isLoading || isRated"
+            <button mat-icon-button class="text-error hover-div" label="Dislike" title="Não gostei" [disabled]="isLoading || isRated"
                 (click)="rate(false)">
                 <mat-icon>thumb_down</mat-icon>
             </button>

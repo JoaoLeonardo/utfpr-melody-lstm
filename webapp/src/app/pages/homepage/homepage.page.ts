@@ -80,6 +80,7 @@ export class HomepageComponent implements OnInit {
             this.playerController.melody = {
                 input_sequence: this.service.playerUtil.convertToInputSequence(res)
             }
+            console.log(this.playerController.melody)
             this.onClickLogo();
         }, error => {
             this.loading = false;

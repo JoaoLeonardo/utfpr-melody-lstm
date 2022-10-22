@@ -41,6 +41,9 @@ body {
 .d-pad-top { padding-top: 8px !important; }
 .d-pad-horizontal { padding: 8px 0px !important; }
 
+.no-m-top { margin-top: 0px !important;}
+
+.d-pad-lg { padding: 16px !important; }
 .d-pad-vertical-lg { padding: 16px 0px !important ;}
 
 .d-pad-card-container { padding: 8px 5vw !important; }
@@ -54,9 +57,13 @@ body {
 
 .hover-div:hover { 
     background-color: #0000001c;
+    box-shadow: 4px 4px 16px rgb(0 0 0 / 50%);
     transition: 200ms;
 }
 
+.border-r-soft { border-radius: 4px !important;}
+.border-r-top-soft { border-radius: 4px 4px 0px 0px !important;}
+.border-r-bottom-soft { border-radius: 0px 0px 4px 4px !important;}
 .border-r-hard { border-radius: 16px !important;}
 
 .full-width { width: 100%; }
@@ -99,12 +106,4 @@ body {
 .mat-fab {
     position: fixed !important;
     bottom: 32px !important;
-}
-
-.text-sucess {
-    color: green !important;
-}
-
-.text-error {
-    color: red !important;
 }
